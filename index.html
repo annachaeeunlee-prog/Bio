@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroStudy — Brain &amp; Neuroscience</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo" aria-hidden="true">◐</span> NeuroStudy</div>
+  <nav id="nav" aria-label="Sections">
+    <button data-tab="home" class="active">Home</button>
+    <button data-tab="atlas">Brain atlas</button>
+    <button data-tab="neuron">Neuron</button>
+    <button data-tab="chem">Chemistry &amp; medicine</button>
+    <button data-tab="conditions">Conditions</button>
+    <button data-tab="cards">Flashcards</button>
+    <button data-tab="quiz">Quiz</button>
+    <button data-tab="glossary">Glossary</button>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="tab active">
+    <div class="hero">
+      <h1>Learn the brain, one piece at a time.</h1>
+      <p>Explore the anatomy, see how neurons fire, and connect it all to real medicine. Then test yourself.</p>
+      <button class="primary" data-go="atlas">Start with the brain atlas</button>
+    </div>
+    <h2>Your progress</h2>
+    <div class="stats" id="stats"></div>
+    <h2>Study path</h2>
+    <ol class="path">
+      <li><button data-go="atlas"><b>Brain atlas</b><span>Click each region to learn what it does and what happens when it's damaged.</span></button></li>
+      <li><button data-go="neuron"><b>Neuron</b><span>Parts of a nerve cell and the action potential, step by step.</span></button></li>
+      <li><button data-go="chem"><b>Chemistry &amp; medicine</b><span>Neurotransmitters and the medicines that act on them.</span></button></li>
+      <li><button data-go="conditions"><b>Conditions</b><span>Stroke, Alzheimer's, Parkinson's and more.</span></button></li>
+      <li><button data-go="cards"><b>Flashcards</b><span>Drill the facts until they stick.</span></button></li>
+      <li><button data-go="quiz"><b>Quiz</b><span>Ten questions with explanations.</span></button></li>
+    </ol>
+    <p class="note">For learning only — this is not medical advice.</p>
+  </section>
+
+  <!-- ATLAS -->
+  <section id="atlas" class="tab">
+    <h1>Brain atlas</h1>
+    <p class="lead">Start with the outside, then switch to the two cut-open views to see what the parts inside look like. Click any coloured part.</p>
+    <div class="split">
+      <div class="panel">
+        <div class="chips" id="viewToggle">
+          <button data-view="outside" class="sel">Outside</button>
+          <button data-view="mid">Inside: cut down the middle</button>
+          <button data-view="cor">Inside: cut ear to ear</button>
+        </div>
+
+        <div class="view" data-view="outside">
+          <p class="caption">The left side of the brain, seen from outside. The front of the head is on the left.</p>
+          <svg id="brain" viewBox="40 25 530 420" role="group" aria-label="Outside view of the brain">
+            <path class="region" data-region="brainstem" d="M300 300 C320 308 360 308 378 300 C382 350 388 390 398 432 L346 432 C340 390 322 350 300 300 Z"/>
+            <path class="region" data-region="cerebellum" d="M380 306 C420 292 480 284 522 298 C548 320 538 366 502 386 C462 402 412 392 386 362 C372 342 372 320 380 306 Z"/>
+            <g class="folia" aria-hidden="true">
+              <path d="M392 328 C430 312 490 308 530 322"/><path d="M388 346 C430 332 490 328 532 342"/>
+              <path d="M394 364 C435 352 485 350 520 362"/>
+            </g>
+            <path class="region" data-region="temporal" d="M180 245 L285 212 C340 205 400 205 440 215 L465 285 C420 300 350 310 280 312 C220 315 170 300 160 275 C157 262 165 252 180 245 Z"/>
+            <path class="region" data-region="occipital" d="M470 95 C520 135 545 200 525 255 C515 280 490 290 465 285 L440 215 Z"/>
+            <path class="region" data-region="parietal" d="M300 48 C360 40 430 55 470 95 L440 215 C400 205 340 205 285 212 C280 160 285 100 300 48 Z"/>
+            <path class="region" data-region="frontal" d="M300 48 C220 40 110 70 75 160 C60 200 80 245 130 258 C150 262 165 255 180 245 L285 212 C280 160 285 100 300 48 Z"/>
+            <g class="labels" aria-hidden="true">
+              <text x="180" y="150">Frontal</text><text x="368" y="130">Parietal</text>
+              <text x="310" y="265">Temporal</text><text x="490" y="205">Occipital</text>
+              <text x="458" y="346">Cerebellum</text><text x="371" y="421">Brainstem</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="view" data-view="mid" hidden>
+          <p class="caption">Imagine slicing the brain in half between the two hemispheres, from front to back, and looking at the cut surface. The front of the head is on the left.</p>
+          <svg id="brainMid" viewBox="40 25 530 420" role="group" aria-label="Brain cut down the middle, seen from the side">
+            <path class="ctx" d="M75 160 C110 70 220 40 300 48 C360 40 430 55 470 95 C520 135 545 200 525 255 C515 282 485 290 450 284 C420 280 400 262 380 250 C340 246 290 250 255 252 C200 256 130 255 100 235 C70 215 62 190 75 160 Z"/>
+            <g class="gyri" aria-hidden="true">
+              <path d="M120 150 C150 110 200 85 250 80"/><path d="M300 75 C350 70 400 85 430 110"/>
+              <path d="M455 140 C480 170 495 210 490 245"/><path d="M110 200 C130 225 170 235 200 232"/>
+              <path d="M430 150 C440 190 440 225 425 255"/>
+            </g>
+            <path class="band-edge" d="M215 215 C195 190 205 150 250 140 C300 128 360 132 395 160 C410 172 410 195 398 205"/>
+            <path class="region band" data-region="corpuscallosum" d="M215 215 C195 190 205 150 250 140 C300 128 360 132 395 160 C410 172 410 195 398 205"/>
+            <path class="region" data-region="brainstem" d="M318 228 C335 222 360 226 372 236 C380 262 392 300 398 340 C402 370 408 400 414 425 L372 425 C368 400 362 375 356 352 C330 350 312 325 316 298 C318 282 326 270 332 262 C326 252 320 240 318 228 Z"/>
+            <path class="region" data-region="cerebellum" d="M402 298 C420 275 480 270 520 290 C550 310 548 360 520 382 C485 402 435 396 414 370 C402 350 398 320 402 298 Z"/>
+            <g class="arbor" aria-hidden="true">
+              <path d="M410 335 L452 330 M452 330 L492 300 M452 330 L508 336 M452 330 L486 368 M430 332 L446 298 M432 334 L442 372"/>
+            </g>
+            <ellipse class="region" data-region="thalamus" cx="310" cy="198" rx="44" ry="26"/>
+            <path class="region" data-region="hypothalamus" d="M270 222 C285 214 306 222 314 234 C306 250 285 254 272 246 C264 238 264 228 270 222 Z"/>
+            <g class="plain" aria-hidden="true"><path d="M283 251 L279 262"/><circle cx="278" cy="270" r="9"/></g>
+            <g class="labels" aria-hidden="true">
+              <text x="310" y="203">Thalamus</text>
+              <text class="sm" x="349" y="246">Midbrain</text><text class="sm" x="350" y="312">Pons</text><text class="sm" x="391" y="404">Medulla</text>
+              <text x="478" y="350">Cerebellum</text>
+            </g>
+            <g class="lbl" aria-hidden="true">
+              <text x="150" y="130">Frontal lobe</text><text x="385" y="100">Parietal lobe</text><text x="490" y="215">Occipital</text>
+              <text x="300" y="122">Corpus callosum</text>
+              <path d="M222 300 L266 240"/><text x="200" y="316">Hypothalamus</text>
+              <path d="M222 352 L272 277"/><text x="205" y="368">Pituitary gland</text>
+              <text class="sm" x="300" y="395">Brainstem</text><path d="M335 391 L368 391"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="view" data-view="cor" hidden>
+          <p class="caption">Imagine slicing the brain from ear to ear and looking at it from the front. Both halves hold the same structures. The colours match the list below. This drawing is simplified to show every part in one slice.</p>
+          <svg id="brainCor" viewBox="40 30 520 410" role="group" aria-label="Brain cut from ear to ear, seen from the front">
+            <g id="corHalf">
+              <path class="ctx rim" d="M304 62 C370 38 480 62 525 135 C556 190 552 250 500 270 C548 290 552 345 520 370 C485 398 420 395 385 372 C362 356 345 325 338 292 L304 286 Z"/>
+              <path class="csf" d="M312 172 C335 168 372 172 386 182 C372 198 345 198 318 191 Z"/>
+              <path class="region" data-region="brainstem" d="M300 284 L328 290 C332 330 328 380 323 428 L300 428 Z"/>
+              <path class="region" data-region="corpuscallosum" d="M300 148 L382 148 C398 150 402 162 392 169 L300 166 Z"/>
+              <ellipse class="region" data-region="basalganglia" cx="400" cy="197" rx="13" ry="17"/>
+              <path class="region" data-region="basalganglia" d="M386 216 C410 200 441 215 446 245 C441 268 415 273 392 262 C381 248 380 230 386 216 Z"/>
+              <ellipse class="region" data-region="thalamus" cx="339" cy="222" rx="31" ry="24"/>
+              <path class="region" data-region="hypothalamus" d="M305 251 C320 246 336 252 337 266 C331 280 313 284 305 280 Z"/>
+              <ellipse class="region" data-region="amygdala" cx="392" cy="293" rx="18" ry="13"/>
+              <path class="region" data-region="hippocampus" d="M372 320 C384 304 420 304 431 322 C437 340 416 352 395 346 C380 342 367 334 372 320 Z"/>
+              <path class="curl" d="M384 326 C394 316 412 318 416 328 C416 336 404 338 398 332"/>
+            </g>
+            <g class="lbl" aria-hidden="true">
+              <text class="sm" x="455" y="120">white matter</text><text class="sm" x="480" y="336">temporal lobe</text>
+              <text class="sm" x="150" y="135">cortex (grey matter)</text><path d="M128 122 L104 108"/>
+              <text class="sm" x="349" y="188">ventricle</text>
+              <text class="in" x="300" y="141">Corpus callosum</text>
+              <text class="in" x="339" y="226">Thalamus</text>
+              <text class="in start" x="452" y="236">Basal ganglia</text>
+              <text class="in start" x="415" y="297">Amygdala</text>
+              <text class="in" x="402" y="369">Hippocampus</text>
+              <text class="start" x="336" y="420">Brainstem</text>
+              <text class="end" x="262" y="420">Hypothalamus</text><path d="M252 406 L272 284"/>
+            </g>
+          </svg>
+        </div>
+
+        <h3>All parts</h3>
+        <div class="chips" id="surfaceChips"></div>
+      </div>
+      <article class="panel info" id="regionInfo" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <!-- NEURON -->
+  <section id="neuron" class="tab">
+    <h1>The neuron</h1>
+    <p class="lead">Neurons are the signalling cells of the nervous system. Click a part of the cell.</p>
+    <div class="split">
+      <div class="panel">
+        <svg id="neuronSvg" viewBox="0 0 640 260" role="group" aria-label="Neuron diagram">
+          <g class="np" data-part="dendrites">
+            <path d="M95 110 L50 70 M70 88 L40 95 M70 88 L62 50 M90 135 L35 140 M55 138 L30 165 M100 155 L60 205 M78 182 L45 200 M78 182 L85 225 M120 98 L115 45 M117 65 L140 35"/>
+          </g>
+          <g class="np" data-part="axon"><path d="M150 130 L505 130"/></g>
+          <g class="np" data-part="hillock"><path class="fill" d="M146 112 L182 124 L182 136 L146 148 Z"/></g>
+          <g class="np" data-part="soma"><circle class="fill" cx="120" cy="130" r="36"/><circle class="nucleus" cx="120" cy="130" r="12"/></g>
+          <g class="np" data-part="myelin">
+            <rect class="fill" x="190" y="116" width="62" height="28" rx="14"/><rect class="fill" x="268" y="116" width="62" height="28" rx="14"/>
+            <rect class="fill" x="346" y="116" width="62" height="28" rx="14"/><rect class="fill" x="424" y="116" width="62" height="28" rx="14"/>
+          </g>
+          <g class="np" data-part="node">
+            <circle class="hit" cx="260" cy="130" r="9"/><circle class="hit" cx="338" cy="130" r="9"/><circle class="hit" cx="416" cy="130" r="9"/>
+          </g>
+          <g class="np" data-part="terminal">
+            <path d="M505 130 L565 75 M505 130 L585 130 M505 130 L565 185 M540 98 L580 100 M540 162 L580 160"/>
+            <circle class="fill" cx="570" cy="70" r="8"/><circle class="fill" cx="592" cy="130" r="8"/><circle class="fill" cx="570" cy="190" r="8"/>
+            <circle class="fill" cx="587" cy="100" r="8"/><circle class="fill" cx="587" cy="160" r="8"/>
+          </g>
+          <g class="arrow" aria-hidden="true"><path d="M230 232 L420 232 M410 225 L420 232 L410 239"/><text x="325" y="252">signal travels this way</text></g>
+        </svg>
+        <div class="chips" id="neuronChips"></div>
+      </div>
+      <article class="panel info" id="neuronInfo" aria-live="polite"></article>
+    </div>
+
+    <h2>The action potential</h2>
+    <p class="lead">This is the electrical signal a neuron sends down its axon. Step through it.</p>
+    <div class="split">
+      <div class="panel">
+        <svg id="apSvg" viewBox="0 0 520 250" role="img" aria-label="Graph of membrane voltage over time during an action potential">
+          <g class="axis">
+            <path d="M40 15 L40 225 L500 225"/>
+            <text x="34" y="39" text-anchor="end">+30</text><text x="34" y="85" text-anchor="end">0</text>
+            <text x="34" y="170" text-anchor="end">−55</text><text x="34" y="193" text-anchor="end">−70</text>
+            <text x="270" y="244" text-anchor="middle">time (a few milliseconds)</text>
+            <text x="12" y="120" text-anchor="middle" transform="rotate(-90 12 120)">mV</text>
+          </g>
+          <path class="threshold" d="M40 166 L500 166"/><text class="thlabel" x="496" y="160" text-anchor="end">threshold</text>
+          <path class="seg" data-seg="0" d="M40 189 L150 189"/>
+          <path class="seg" data-seg="1" d="M150 189 L185 166"/>
+          <path class="seg" data-seg="2" d="M185 166 C200 120 212 50 225 35"/>
+          <path class="seg" data-seg="3" d="M225 35 C245 45 265 150 285 189"/>
+          <path class="seg" data-seg="4" d="M285 189 C300 210 330 210 380 189"/>
+          <path class="seg" data-seg="5" d="M380 189 L500 189"/>
+        </svg>
+        <div class="stepper">
+          <button id="apPrev">← Back</button>
+          <span id="apCount"></span>
+          <button id="apNext" class="primary">Next →</button>
+        </div>
+      </div>
+      <article class="panel info" id="apInfo" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <!-- CHEMISTRY -->
+  <section id="chem" class="tab">
+    <h1>Chemistry &amp; medicine</h1>
+    <p class="lead">Neurons talk to each other with chemicals called neurotransmitters. Many brain medicines work by raising, lowering, copying or blocking one of them.</p>
+    <div class="panel steps">
+      <h3>How a synapse works</h3>
+      <ol>
+        <li>An action potential arrives at the axon terminal.</li>
+        <li>Calcium (Ca²⁺) flows in and triggers vesicles to release neurotransmitter.</li>
+        <li>The neurotransmitter crosses the synapse and binds receptors on the next cell.</li>
+        <li>The signal ends when the neurotransmitter is broken down by enzymes or taken back up (reuptake).</li>
+      </ol>
+    </div>
+    <div class="grid" id="ntGrid"></div>
+    <p class="note">Medicine names are examples for study. Never take or change a medicine without a doctor.</p>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section id="conditions" class="tab">
+    <h1>Conditions of the brain</h1>
+    <p class="lead">Seeing what goes wrong is one of the best ways to remember how the healthy brain works.</p>
+    <div class="grid" id="condGrid"></div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="cards" class="tab">
+    <h1>Flashcards</h1>
+    <div class="chips" id="deckChips"></div>
+    <div class="cardwrap">
+      <button id="flash" class="flash" aria-live="polite"></button>
+      <p class="hint">Click the card (or press Space) to flip.</p>
+      <div class="stepper">
+        <button id="cardAgain">Still learning</button>
+        <span id="cardCount"></span>
+        <button id="cardGot" class="primary">Got it</button>
+      </div>
+      <button id="cardReset" class="link">Reset mastered cards</button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="tab">
+    <h1>Quiz</h1>
+    <div class="panel quizbox" id="quizBox"></div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section id="glossary" class="tab">
+    <h1>Glossary</h1>
+    <input id="glossSearch" type="search" placeholder="Search terms…" aria-label="Search glossary">
+    <dl id="glossList" class="gloss"></dl>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
